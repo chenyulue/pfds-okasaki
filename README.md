@@ -1,0 +1,1 @@
+This is a Haskell implementation of the sample code in the book *Purely Functinonal Data Structure* by Chris Okasaki, and the answers to the exercises in Haskell.
