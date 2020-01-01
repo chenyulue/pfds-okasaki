@@ -67,6 +67,7 @@ library
                  , Ch03.Ex05
                  , Ch03.Ex06
                  , Ch03.Ex07
+                 , Ch03.RBTree
   
   -- Modules included in this library but not exported.
   -- other-modules:       
