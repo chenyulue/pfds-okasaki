@@ -1,0 +1,18 @@
+-- 3.1 Leftist Heaps
+module Ch03.LeftistHeap where
+
+-- A general typeclass for heaps
+class Heap p where
+  type Elem p
+  empty :: p
+  isEmpty :: p -> Bool
+  insert :: Ord (Elem p) => Elem p -> p -> p
+  merge :: Ord (Elem p) => p -> p -> p
+  findMin :: p -> Elem p
+  deleteMin :: Ord (Elem p) => p -> p
+
+-- A data type for leftist heaps
+data LHeap a = Empty
+             | Node Int a (LHeap a) (LHeap a)
+             deriving (Show, Eq)
+

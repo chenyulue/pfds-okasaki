@@ -1,0 +1,24 @@
+-- Exercise 3.6
+{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE TypeSynonymInstances #-}
+{-# LANGUAGE FlexibleInstances #-}
+module Ch03.Ex06 where
+
+import Ch03.LeftistHeap (Heap(..))
+
+-- Reimplement binomial heaps with a new data type, which has no field
+-- for the rank annotations.
+data BTree a = Node a [BTree a] deriving (Eq, Show)
+
+type BHeap a = [(Int, BTree a)]
+
+instance Ord a => Heap (BHeap a) where
+  type (BHeap a) = a
+
+  empty = []
+
+  isEmpty = null
+
+  singleton x = [(0, Node x [])]
+
+  

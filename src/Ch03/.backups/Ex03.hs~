@@ -1,0 +1,14 @@
+-- Exercise 3.3
+module Ch03.Ex03 where
+
+import Ch03.LeftistHeap
+
+-- fromList that produces a leftist heap from an unordered list
+fromList :: Ord a => [a] -> LHeap a
+fromList [] = Empty
+fromList [x] = singleton x
+fromList (x1:x2:xs) =
+  head . loop $ merge (singleton x1) (singleton x2) : fromList xs : []
+  where
+    loop (h1:h2:hs) = loop $ merge h1 h2 : loop hs
+    loop hs = hs

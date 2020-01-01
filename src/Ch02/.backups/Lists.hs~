@@ -1,0 +1,7 @@
+-- 2.1 Lists:
+-- Implement the data structure of Stack, and the stack nomenclature (push, peek, pop, etc) are
+-- used instead of list nomenclature in order to avoid the name conficts.
+module CH02.Lists where
+
+-- A general typecalss that supports stack's methods, which is analog to the signatures in
+-- Standard ML.

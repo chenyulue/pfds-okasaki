@@ -1,0 +1,36 @@
+-- Exercise 3.4
+{-# LANGUAGE TypeFamilies #-}
+module Ch03.Ex04 where
+
+import Ch03.LeftistHeap
+
+-- Weight-biased leftist heaps
+-- (a) It's the same reason as Exercise 3.1
+-- (b) An implementation of heaps using weight-biased leftist heap
+data WHeap a = E
+             | T Int a (WHeap a) (WHeap a)
+             deriving (Show, Eq)
+
+instance Ord a => Heap (WHeap a) where
+  type Elem (WHeap a) = a
+
+  empty = E
+
+  isEmpty E = True
+  isEmpty _ = False
+
+  singleton x = T 1 x E E
+
+  merge h E = h
+  merge E h = h
+  merge h1@(T _ x l1 r1) h2@(T _ y l2 y2)
+    | x < y = makeTW x l1 (merge r1 h2)
+    | otherwise = makeTW y l2 (merge h1 r2)
+
+  insert x h = merge (singleton x) h
+
+  findMin E = Nothing
+  findMin (T _ x _ _) = Just x
+
+  deleteMin E = error "Empty Heaps"
+  deleteMin (T _ _ l r) = merge l r
