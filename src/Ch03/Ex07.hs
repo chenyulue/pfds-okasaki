@@ -6,10 +6,10 @@ import Ch03.LeftistHeap (Heap(..))
 -- findMin that takes only O(1) time by storing the minimum element
 -- separately from the rest of the heap
 data ExplicitMin h a = E
-                     | NE a (h a)
+                     | NE a h
                      deriving (Show, Eq)
 
-instance (Ord a, Heap (h a)) => Heap (ExplicitMin h a) where
+instance (Ord a, Heap h, a ~ Elem h) => Heap (ExplicitMin h a) where
   type Elem (ExplicitMin h a) = a
   
   empty = E
@@ -30,4 +30,8 @@ instance (Ord a, Heap (h a)) => Heap (ExplicitMin h a) where
   findMin (NE x _) = x
 
   deleteMin E = error "Empty Heaps"
-  deleteMin (NE _ hp) = NE (findMin hp) (deleteMin hp)
+  deleteMin (NE _ hp) =
+    let hp' = deleteMin hp
+     in if isEmpty hp'
+           then E
+           else NE (findMin hp') hp'
