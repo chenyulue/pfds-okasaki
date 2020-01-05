@@ -68,6 +68,12 @@ library
                  , Ch03.Ex06
                  , Ch03.Ex07
                  , Ch03.RBTree
+                 , Ch03.Ex09
+                 , Ch03.Ex10
+                 , Ch04.Ex02
+                 , Ch05.Queue
+                 , Ch05.Ex01
+                 , Ch05.SplayHeap
   
   -- Modules included in this library but not exported.
   -- other-modules:       

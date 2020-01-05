@@ -1,0 +1,17 @@
+-- 5.2 Queues
+{-# LANGUAGE TypeFamilies #-}
+module Ch05.Queue where
+
+-- A general type class for queues. We use the traditional queue nomenclature
+-- (empty, isEmpty, peek, enq, deq, etc) instead of the list nomenclature in
+-- order to avoid the name conflicts.
+class Queue q where
+  type Elem q
+  empty :: q             -- Construct a empty queue
+  isEmpty :: q -> Bool   -- Check if the queue is empty
+  peek :: q -> Elem q    -- Get the element at the front of the queue without removing it
+  enq :: q -> Elem q -> q   -- Add an item to the rear of the queue
+  deq :: q -> q             -- Remove an item from the front of the queue
+
+  
+  

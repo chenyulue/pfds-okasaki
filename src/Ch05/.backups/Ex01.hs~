@@ -1,0 +1,18 @@
+-- Exercise 5.1
+{-# LANGUAGE TypeFamilies #-}
+module Ch05.Ex01 where
+
+-- Implement a double-ended queue abstraction, which allows reads and
+-- writes to both ends of the queue
+class DeQueue q where
+  type Elem q
+  empty :: q
+  isEmpty :: q -> Bool
+-- insert, remove, and inspect the fron element   
+  pushFront :: Elem q -> q -> q
+  popFront :: q -> q 
+  getFront :: q -> Elem q
+-- insert, remove, and inspect the back element
+  pushBack :: q -> Elem q -> q
+  popBack :: q -> q 
+  getBack :: q -> Elem q 
