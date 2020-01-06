@@ -1,0 +1,29 @@
+-- Exercise 3.10
+module Ch03.Ex10 where
+
+import Ch03.RBTree
+
+-- (a) Splite balance into two functions, lbalance and rbalance
+lbalance, rbalance :: Color -> RBTree a -> a -> RBTree a -> RBTree a
+lbalance B (Node R (Node R a x b) y c) z d
+  = Node R (Node B a x b) y (Node B c z d)
+lbalance B (Node R a x (Node R b y c)) z d
+  = Node R (Node B a x b) y (Node B c z d)
+lbalance color l z r = Node color l z r
+                   
+rbalance B a x (Node R (Node R b y c) z d)
+  = Node R (Node B a x b) y (Node B c z d)
+rbalance B a x (Node R b y (Node R c z d))
+  = Node R (Node B a x b) y (Node B c z d)
+rbalance color l z r = Node color l z r
+
+insert' :: Ord a => a -> RBTree a -> RBTree a
+insert' v tr =
+  let ins Empty = Node R Empty v Empty
+      ins s@(Node color a y b) =
+        case compare v y of
+          LT -> lbalance color (ins a) y b
+          GT -> rbalance color a y (ins b)
+          EQ -> s
+      Node _ a y b = ins tr
+   in Node B a y b

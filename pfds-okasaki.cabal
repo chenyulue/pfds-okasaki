@@ -74,6 +74,10 @@ library
                  , Ch05.Queue
                  , Ch05.Ex01
                  , Ch05.SplayHeap
+                 , Ch05.Ex04
+                 , Ch05.Ex07
+                 , Ch05.PairingHeap
+                 , Ch05.Ex08
   
   -- Modules included in this library but not exported.
   -- other-modules:       

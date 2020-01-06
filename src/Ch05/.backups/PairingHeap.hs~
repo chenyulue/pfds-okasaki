@@ -1,0 +1,14 @@
+-- 5.5 Pairing Heaps
+module Ch05.PairingHeap where
+
+import Ch03.LeftistHeap (Heap (..))
+
+data PairingHeap a = Empty
+                   | Node a [ParingHeap a]
+                   deriving (Eq, Show)
+
+instance Ord a => Heap (PairingHeap a) where
+  type Elem (PairingHeap a ) = a
+
+  findMin Empty = error "Empty Heaps"
+  findMin (Node x hs) = x

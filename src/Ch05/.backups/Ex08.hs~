@@ -1,0 +1,6 @@
+-- Exercise 5.8
+module Ch05.Ex08 where
+
+import Ch05.LeftistHeap (Heap(..))
+import Ch05.PairingHeap
+

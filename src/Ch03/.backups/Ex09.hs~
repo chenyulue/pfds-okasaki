@@ -1,0 +1,10 @@
+-- Exercise 3.9
+module Ch03.Ex09 where
+
+import Ch03.RBTree
+
+-- Write a function fromOrdList that converts a sorted list with no
+-- duplicates into a red-black tree
+fromOrdList :: Ord a => [a] -> RBTree a
+fromOrdList [] = Empty
+fromOrdList xs = undefined
